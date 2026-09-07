@@ -1,509 +1,138 @@
-# TruthGuard AI
+# 🛡️ TruthGuard AI
 
-Build a complete, fully functional full-stack website for my college Phase-II project:
+### AI-Assisted News Verification and Fake News Detection Platform
 
-FAKE NEWS DETECTION – REAL TIME PRE-PUBLICATION ANALYSIS
+TruthGuard AI is a modern web-based news verification platform designed to help users evaluate whether a news claim is likely to be **REAL, FAKE, or UNCERTAIN**.
 
-Create a real working application, NOT a static UI prototype. The system must allow users to enter a news headline/article and optionally upload an image, then return REAL / FAKE / UNCERTAIN, confidence, risk score, explanation, evidence, source credibility and publication recommendation.
+The system combines deterministic linguistic analysis, source credibility evaluation, web-based evidence retrieval, and claim-to-evidence matching to provide an explainable verification result.
 
-TECH STACK
+---
 
-Frontend:
+## 📌 Project Overview
 
-React + TypeScript + Vite
+The rapid spread of misinformation through social media and online platforms makes it difficult for users to determine whether a news article or claim is trustworthy.
 
-Tailwind CSS
+**TruthGuard AI** addresses this problem by analyzing submitted news content and comparing claims against information retrieved from online sources.
 
-Lucide icons
+The platform provides:
 
-Recharts
+- News credibility analysis
+- Fake-news risk detection
+- Source credibility evaluation
+- Claim extraction
+- Web evidence retrieval
+- Claim/evidence matching
+- Confidence scoring
+- Explainable verification results
+- User-friendly verification dashboard
 
-Fully responsive
+---
 
-Backend:
+## 🎯 Objectives
 
-Python + Flask/FastAPI
+The main objectives of TruthGuard AI are:
 
-REST APIs
+1. Detect potentially misleading or fake news.
+2. Analyze linguistic characteristics of submitted content.
+3. Retrieve supporting or contradicting evidence from the web.
+4. Evaluate the credibility of available sources.
+5. Match claims with retrieved evidence.
+6. Provide an understandable verification result.
+7. Reduce dependence on external Large Language Model APIs.
+8. Provide an explainable and transparent verification pipeline.
 
-SQLite + SQLAlchemy
+---
 
-AI/ML:
+## ✨ Key Features
 
-PyTorch
+### 🔍 News Verification
 
-Hugging Face Transformers
+Users can submit a news article, headline, or claim for analysis.
 
-BERT/FakeBERT-style text classification
+The system evaluates the content and produces one of three primary results:
 
-Computer vision model for images
+- 🟢 **REAL**
+- 🔴 **FAKE**
+- 🟡 **UNCERTAIN**
 
-Explainable AI
+---
 
-Multimodal score fusion
+### 🧠 Linguistic Analysis
 
-Use .env for secrets/API keys.
+TruthGuard analyzes characteristics of the submitted text, including:
 
-BRAND & DESIGN
+- Sensational language
+- Attribution indicators
+- Emotional wording
+- Claim patterns
+- Other linguistic credibility signals
 
-Brand: TruthGuard AI
-Subtitle: Real-Time Fake News Detection & Verification
-Tagline: “Verify Before You Amplify.”
+These signals contribute to the overall credibility assessment.
 
-Create a professional shield/check/AI logo.
+---
 
-Design it as a premium AI SaaS product suitable for a final-year engineering project. Use modern typography, rounded cards, subtle gradients, clean spacing, professional charts, smooth animations and clear status badges. Support desktop, tablet and mobile. Do not make it look like a basic college website.
+### 🌐 Web Evidence Retrieval
 
-NAVIGATION
+The verification pipeline searches for relevant external evidence.
 
-Sticky navbar:
+The system is designed to use:
 
-TruthGuard AI | Home | Analyze | History | How It Works | Model | About
+- Google News RSS
+- DuckDuckGo fallback search
 
-Right side: ● System Online
+Retrieved sources are supplied to the verification pipeline for further analysis.
 
-Add a mobile hamburger menu.
+---
 
-HOME PAGE
+### 📰 Source Credibility
 
-Hero:
+Sources are evaluated according to credibility-related signals.
 
-VERIFY BEFORE YOU AMPLIFY
+The system considers information such as:
 
-AI-Powered Fake News Detection
+- Source/domain reputation
+- Evidence relevance
+- Agreement with the submitted claim
+- Contradicting evidence
+- Supporting evidence
 
-“Analyze news articles, claims and images before publication. Get an explainable AI assessment in seconds.”
+---
 
-Buttons:
+### 📋 Claim Extraction
 
-Analyze News
+News content can contain multiple individual claims.
 
-See How It Works
+TruthGuard identifies important claims and generates relevant search queries that can be used to retrieve supporting evidence.
 
-Add a visual AI analysis panel.
+---
 
-Feature cards:
+### 🔗 Claim-to-Evidence Matching
 
-Multimodal Analysis
+Retrieved sources are compared against individual claims.
 
-Transformer AI
+The system attempts to determine whether available evidence:
 
-Explainable AI
+- Supports the claim
+- Contradicts the claim
+- Does not provide enough information
 
-Fact Verification
+---
 
-Source Credibility
+### 📊 Confidence and Risk Scoring
 
-Real-Time Results
+The platform generates credibility-related scores to help explain the final result.
 
-ANALYZE PAGE
+The system uses thresholds to classify results:
 
-Create the main analysis workspace.
+```text
+Credibility >= 62
+        ↓
+      REAL
 
-Inputs:
+Credibility <= 40
+        ↓
+      FAKE
 
-News Headline
-
-News Content
-
-Source URL (optional)
-
-Source Name (optional)
-
-Publication Date (optional)
-
-Image upload
-
-Image uploader:
-Drag & Drop Image Here / Browse Files
-JPG, PNG, WEBP, maximum 10 MB.
-
-Show image preview.
-
-Button: Analyze News
-
-When clicked:
-
-Validate input
-
-Send to backend
-
-Show real loading state
-
-Process text/image/evidence
-
-Generate final result
-
-Show stages such as:
-
-Preprocessing
-
-Transformer Analysis
-
-Image Analysis
-
-Fact Verification
-
-Explainable AI
-
-Final Verdict
-
-RESULT PAGE
-
-Create a professional result dashboard.
-
-Show:
-
-FINAL VERDICT
-
-REAL
-
-FAKE
-
-UNCERTAIN
-
-Display:
-
-Confidence
-
-Risk level
-
-Overall risk score
-
-Create score cards:
-
-Text Credibility
-
-Image Credibility
-
-Source Credibility
-
-Evidence Support
-
-If no image exists, show Image Analysis: Not Available. Never invent scores.
-
-Add risk meter:
-
-0–30 Low
-
-31–60 Moderate
-
-61–80 High
-
-81–100 Critical
-
-AI EXPLANATION
-
-Section:
-
-Why did TruthGuard AI reach this conclusion?
-
-Generate the explanation from the actual analysis.
-
-Show:
-
-Important keywords
-
-Suspicious phrases
-
-Linguistic indicators
-
-Claim indicators
-
-Sensationalism indicators
-
-Use Explainable AI such as attention/token importance, SHAP or LIME where practical. Do not hard-code explanations.
-
-TEXT ANALYSIS
-
-Display:
-
-Prediction
-
-Confidence
-
-Important tokens
-
-Suspicious phrases
-
-Sentiment
-
-Linguistic patterns
-
-Claim/sensationalism indicators
-
-Use a visual token/keyword representation.
-
-IMAGE ANALYSIS
-
-If an image is supplied, analyze it with a suitable computer-vision model.
-
-Display:
-
-Image preview
-
-Image score
-
-Suspicion level
-
-Visual indicators
-
-Text/image consistency
-
-Explanation
-
-Statuses:
-
-AUTHENTIC-LOOKING
-
-SUSPICIOUS
-
-UNABLE TO DETERMINE
-
-Never claim absolute proof of authenticity/manipulation.
-
-FACT VERIFICATION
-
-Extract meaningful claims and attempt verification using available trusted external sources/APIs.
-
-For each claim show:
-
-Claim
-
-Status
-
-Evidence
-
-Source
-
-Relevance
-
-Statuses:
-
-SUPPORTED
-
-CONTRADICTED
-
-UNVERIFIED
-
-If verification is unavailable, clearly display:
-“External verification unavailable.”
-
-Never fabricate evidence, sources or URLs.
-
-SOURCE CREDIBILITY
-
-Show available:
-
-Domain
-
-HTTPS
-
-Source name
-
-Author
-
-Publication date
-
-Credibility score
-
-Missing data must show Not Provided. Never invent metadata.
-
-RECOMMENDATION
-
-For REAL:
-LOW RISK — Evidence supports the content; normal editorial review recommended.
-
-For FAKE:
-HIGH RISK — Multiple suspicious indicators detected; verify before publication.
-
-For UNCERTAIN:
-REQUIRES REVIEW — Evidence is insufficient; perform additional manual verification.
-
-HISTORY
-
-Create /history.
-
-Store and display:
-
-Date
-
-Headline
-
-Verdict
-
-Confidence
-
-Risk
-
-View/Delete
-
-Add search, filtering, sorting and pagination.
-
-Filters:
-All | Real | Fake | Uncertain
-
-Clicking View must display the complete saved analysis.
-
-DASHBOARD
-
-Create /dashboard with real database statistics:
-
-Total Analyses
-
-Real
-
-Fake
-
-Uncertain
-
-Average Confidence
-
-Add charts for prediction distribution and activity over time. Never use fake statistics.
-
-HOW IT WORKS
-
-Show:
-
-Input → Text Preprocessing → Transformer Analysis → Image Analysis → Fact Verification → Multimodal Fusion → Explainable AI → Final Verdict
-
-Explain each step simply.
-
-MODEL PAGE
-
-Explain:
-
-BERT/FakeBERT
-
-CNN
-
-Computer Vision
-
-Multimodal Fusion
-
-Explainable AI
-
-If exact FakeBERT/VisualBERT/MMBT models are unavailable, implement the closest practical working architecture and clearly state the actual model used. Never claim a model was trained if it was not.
-
-BACKEND APIs
-
-Implement and connect:
-
-POST /api/analyze
-POST /api/analyze/text
-POST /api/analyze/image
-POST /api/fact-check
-GET /api/history
-GET /api/history/:id
-DELETE /api/history/:id
-GET /api/stats
-GET /api/health
-
-
-AI PIPELINE
-
-Text:
-
-News → Preprocessing → BERT/FakeBERT → Text Prediction
-
-Image:
-
-Image → Preprocessing → Computer Vision → Image Score
-
-Fusion:
-
-Text + Image + Evidence + Source → Multimodal Fusion → Final Prediction
-
-If no image is provided, automatically adjust the fusion.
-
-FALLBACK MODE
-
-The application must still work if GPU, model weights or external verification are unavailable.
-
-Create a clearly labelled Demo / Lightweight Model Mode.
-
-Never use random predictions or pretend a fallback is the full model.
-
-DATABASE
-
-Store:
-id, headline, content, source_url, source_name, publication_date, image_path, prediction, confidence, risk_score, text_score, image_score, evidence_score, source_score, explanation, created_at
-
-SECURITY
-
-Implement:
-
-Secure uploads
-
-File type/size validation
-
-Secure filenames
-
-Input validation
-
-Environment variables
-
-No exposed API keys
-
-CORS
-
-Safe error handling
-
-IMPORTANT
-
-Do NOT create fake UI, fake charts, random confidence, hard-coded predictions, fake loading, fake fact-checking, invented evidence or buttons that do nothing.
-
-All real results must come from the actual application pipeline or be clearly labelled demo data.
-
-FINAL REQUIREMENT
-
-Build the entire application, not just a plan or frontend mockup.
-
-After building:
-
-Start frontend and backend.
-
-Test all pages.
-
-Test text analysis.
-
-Test image upload.
-
-Test result generation.
-
-Test history/database.
-
-Test APIs.
-
-Fix all runtime and integration errors.
-
-Verify mobile responsiveness.
-
-Ensure the project starts and works successfully.
-
-The final website must be polished and suitable for Phase-II project demonstration, review and viva.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://verify-amplify.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/6e130660-85be-4a01-8679-1f5917db9b86).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
-#   T R U T H G U A R D  
- 
+40 < Credibility < 62
+        ↓
+    UNCERTAIN
